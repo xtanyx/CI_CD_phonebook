@@ -60,7 +60,6 @@ jobs:
         with:
           message: A new version of phonebook deployed!
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
