@@ -13,6 +13,9 @@ export default [
       },
       ecmaVersion: "latest",
     },
+    "parserOptions": {
+        sourceType: "module"
+    },
     plugins: {
       '@stylistic/js': stylisticJs
     },
