@@ -55,6 +55,6 @@ export default [
     },
   },
   { 
-    ignores: ["**/dist/**", "build/**", "**/vite.config.js"],
+    ignores: ["**/dist/**", "build/**", "**/vite.config.js", "playwright.config.js"],
   },
 ]

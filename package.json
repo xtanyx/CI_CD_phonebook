@@ -10,7 +10,8 @@
     "deploy": "fly deploy",
     "deploy:full": "npm run build:ui && npm run deploy",
     "logs:prod": "fly logs",
-    "lint": "eslint './**/*.{js,jsx}'"
+    "lint": "eslint './**/*.{js,jsx}'",
+    "test:e2e": "playwright test"
   },
   "author": "Tanishq Amarchand",
   "license": "ISC",
@@ -30,10 +31,12 @@
   "devDependencies": {
     "@eslint/js": "^9.13.0",
     "@flydotio/dockerfile": "^0.5.9",
+    "@playwright/test": "^1.49.0",
     "@stylistic/eslint-plugin-js": "^2.9.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^22.9.1",
     "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-vitest-globals": "^1.5.0",
