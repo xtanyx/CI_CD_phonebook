@@ -1,0 +1,19 @@
+name: Scheduled Health Check
+
+on:
+  schedule:
+    - cron: '30 * * * *'
+    - cron: '35 * * * *'
+    - cron: '40 * * * *'
+    - cron: '45 * * * *'
+
+jobs:
+  health_check:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check the deployed service URL
+        uses: jtalk/url-health-check-action@v4
+        with:
+          url: https://ci-cd-phonebook.fly.dev/health
+      - name: Health check replacement
+        run: echo "Health check successful"
