@@ -33,6 +33,7 @@
     "@stylistic/eslint-plugin-js": "^2.9.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
     "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-vitest-globals": "^1.5.0",
