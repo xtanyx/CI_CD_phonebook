@@ -29,7 +29,7 @@ const App = () => {
     if (toDelete) {
       phonebookService
         .remove(id)
-        .then(data => {
+        .then(() => {
           setPersons(persons.filter(person => person.id !== id))
           setNotificationSuccess(true)
           setNotification(`${persons.find(person => person.id === id).name} deleted from phonebook`)
@@ -37,7 +37,7 @@ const App = () => {
             setNotification(null)
           }, 3000)
         })
-    } 
+    }
   }
 
   const handleOnChangeFilter = (event) => {
@@ -79,14 +79,14 @@ const App = () => {
           setNotification(`${error.response.data.error}`)
           setTimeout(() => {
             setNotification(null)
-          }, 3000);
+          }, 3000)
         })
     }
     else {
       const toReplace = window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
       if (toReplace){
         const getPerson = persons.find(person => person.name.toLowerCase() === newName.toLowerCase())
-        const updatedPerson = {...getPerson, number: newNumber}
+        const updatedPerson = { ...getPerson, number: newNumber }
         phonebookService
           .replace(getPerson.id, updatedPerson)
           .then(personData => {
@@ -97,7 +97,7 @@ const App = () => {
           .catch(error => {
             // console.log(error)
             setNotificationSuccess(false)
-            if (error.response.data !== "") {
+            if (error.response.data !== '') {
               setNotification(`${error.response.data.error}`)
               setTimeout(() => {
                 setNotification(null)
@@ -119,9 +119,9 @@ const App = () => {
   }
 
   //Convert the filter string and person.name into lowercase and check if filter is a part of person.name
-  const displaypersons = !toFilter ? 
-                          persons : 
-                          persons.filter((person) => person.name.toLowerCase().includes(filter.toLowerCase()))
+  const displaypersons = !toFilter ?
+      persons :
+      persons.filter((person) => person.name.toLowerCase().includes(filter.toLowerCase()))
 
   return (
     <div>
@@ -131,11 +131,11 @@ const App = () => {
       <Notification message={notification} isSuccess={notificationSuccess}/>
 
       <h2>add a new</h2>
-      <PersonForm handleOnSubmit={handleOnSubmit} 
-                  handleOnChangeName={handleOnChangeName} 
-                  handleOnChangeNumber={handleOnChangeNumber}
-                  newName={newName}
-                  newNumber={newNumber}/>
+      <PersonForm handleOnSubmit={handleOnSubmit}
+        handleOnChangeName={handleOnChangeName}
+        handleOnChangeNumber={handleOnChangeNumber}
+        newName={newName}
+        newNumber={newNumber}/>
 
       <h2>Numbers</h2>
       <Persons displaypersons={displaypersons} handleOnDelete={handleOnDelete}/>

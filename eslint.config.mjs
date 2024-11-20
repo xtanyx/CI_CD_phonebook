@@ -9,6 +9,7 @@ export default [
     languageOptions: {
       sourceType: "module",
       globals: {
+        ...globals.browser,
         ...globals.node,
       },
       ecmaVersion: "latest",
