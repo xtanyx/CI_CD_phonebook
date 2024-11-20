@@ -12,9 +12,9 @@ export default [
         ...globals.node,
       },
       ecmaVersion: "latest",
-    },
-    parserOptions: {
+      parserOptions: {
         sourceType: "module"
+      }
     },
     plugins: {
       '@stylistic/js': stylisticJs
