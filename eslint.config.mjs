@@ -13,7 +13,10 @@ export default [
       },
       ecmaVersion: "latest",
       parserOptions: {
-        sourceType: "module"
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true
+        }
       }
     },
     plugins: {
@@ -48,6 +51,6 @@ export default [
     },
   },
   { 
-    ignores: ["**/dist/**", "build/**", "./frontend/vite.config.js"],
+    ignores: ["**/dist/**", "build/**", "**/vite.config.js"],
   },
 ]
