@@ -7,7 +7,7 @@ export default [
   {
     files: ["**/*.js"],
     languageOptions: {
-      sourceType: "commonjs",
+      sourceType: ["commonjs", "module"],
       globals: {
         ...globals.node,
       },
@@ -48,6 +48,6 @@ export default [
     },
   },
   { 
-    ignores: ["dist/**", "build/**"],
+    ignores: ["dist/**", "build/**", "./frontend/dist/**"],
   },
 ]
