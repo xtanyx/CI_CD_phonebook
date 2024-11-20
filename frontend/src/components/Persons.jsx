@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const Person = ({ person, handleOnDelete }) => {
   return (
     <li>

@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react'
 import phonebookService from './services/phonebook'
+// eslint-disable-next-line no-unused-vars
 import Filter from './components/Filter'
+// eslint-disable-next-line no-unused-vars
 import PersonForm from './components/PersonForm'
+// eslint-disable-next-line no-unused-vars
 import Persons from './components/Persons'
+// eslint-disable-next-line no-unused-vars
 import Notification from './components/Notification'
 
 const App = () => {
