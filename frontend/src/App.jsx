@@ -6,7 +6,7 @@ import Persons from './components/Persons'
 import Notification from './components/Notification'
 
 const App = () => {
-  const [persons, setPersons] = useState([]) 
+  const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
@@ -120,8 +120,8 @@ const App = () => {
 
   //Convert the filter string and person.name into lowercase and check if filter is a part of person.name
   const displaypersons = !toFilter ?
-      persons :
-      persons.filter((person) => person.name.toLowerCase().includes(filter.toLowerCase()))
+    persons :
+    persons.filter((person) => person.name.toLowerCase().includes(filter.toLowerCase()))
 
   return (
     <div>
