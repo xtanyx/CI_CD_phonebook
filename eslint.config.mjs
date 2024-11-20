@@ -11,7 +11,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
-        ...globals.es2015
+        ...globals
       },
       ecmaVersion: "latest",
       parserOptions: {
