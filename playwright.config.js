@@ -12,7 +12,7 @@ const { defineConfig, devices } = require('@playwright/test');
  */
 module.exports = defineConfig({
   webServer: {
-    command: 'npm run start',
+    command: 'npm start',
     url: 'http://localhost:3001',
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
