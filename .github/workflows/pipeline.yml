@@ -8,6 +8,9 @@ on:
     branches: [main]
     types: [opened, synchronize]
 
+env:
+  CONTAINS: ${{ toJson(contains(join(github.event.commits.*.message, ' '), '#skip')) }}
+
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
@@ -23,6 +26,12 @@ jobs:
         run: npm run lint
       - name: build
         run: npm run build:ui
+      - name: Build failure
+        uses: sebastianpopp/discord-action@releases/v2
+        if: ${{ failure() }}
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          message: Build failed. Commit https://github.com/xtanyx/CI_CD_phonebook/commit/${{ github.sha }} broke the build
       - name: test
         run: cd ./frontend && npm test
       - name: Preparing dependencies for playwright
@@ -42,5 +51,24 @@ jobs:
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: deploy
         run: flyctl deploy --remote-only
+        if: ${{ github.event_name == 'push' && env.CONTAINS != 'true' }}
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      - name: Deploy success
+        uses: sebastianpopp/discord-action@releases/v2
+        if: ${{ github.event_name == 'push' && env.CONTAINS != 'true' && success() }}
+        with:
+          message: A new version of phonebook deployed!
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+
+  tag_release:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.71.0
+        if: ${{ github.event_name == 'push' && env.CONTAINS != 'true'}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
