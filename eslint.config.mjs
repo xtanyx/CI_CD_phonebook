@@ -1,5 +1,6 @@
 import globals from "globals";
 import stylisticJs from '@stylistic/eslint-plugin-js'
+import vitest_globals from 'eslint-plugin-vitest-globals'
 import js from '@eslint/js'
 
 export default [
@@ -22,7 +23,8 @@ export default [
       }
     },
     plugins: {
-      '@stylistic/js': stylisticJs
+      '@stylistic/js': stylisticJs,
+      vitest_globals
     },
     rules: {
       '@stylistic/js/indent': [
