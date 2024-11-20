@@ -41,7 +41,7 @@ app.get('/api/persons', (request, response,next) => {
 app.get('/info', (request,response,next) => {
   Person.countDocuments({})
     .then(result => {
-      const peopleString = `Phonebook has info for ${result} people`
+      const peopleString = `Phonebook has info for ${result} people mate`
       const dateTimeString = `${Date()}`
       const infoString = `${peopleString}<br/><br/>${dateTimeString}`
       response.send(infoString)
