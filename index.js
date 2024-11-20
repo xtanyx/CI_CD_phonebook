@@ -28,6 +28,10 @@ app.get('/',(request,response) => {
   response.send('<h1>Hello!!!</h1>')
 })
 
+app.get('/health',(request,response) => {
+  response.send('okay!')
+})
+
 app.get('/api/persons', (request, response,next) => {
   Person.find({})
     .then(persons => {
