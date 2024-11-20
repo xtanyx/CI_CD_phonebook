@@ -12,6 +12,6 @@ describe('Phonebook', () => {
     await page.getByTestId('newName').fill('Jane Doe')
     await page.getByTestId('newNumber').fill('111-111111')
     await page.getByRole('button', { name: 'add' }).click()
-    await expect(page.getByText('Jane Doe 111-111111')).toBeVisible()
+    await expect(page.getByText('Jane Doe 111-111111').first()).toBeVisible()
   })
 })
