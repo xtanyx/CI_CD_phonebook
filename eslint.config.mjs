@@ -5,7 +5,7 @@ import js from '@eslint/js'
 export default [
   js.configs.recommended,
   {
-    files: ["**/*.js"],
+    files: ["**/*.js", "**/*.jsx"],
     languageOptions: {
       sourceType: "module",
       globals: {
@@ -48,6 +48,6 @@ export default [
     },
   },
   { 
-    ignores: ["dist/**", "build/**", "./frontend/dist/**"],
+    ignores: ["**/dist/**", "build/**", "./frontend/vite.config.js"],
   },
 ]
